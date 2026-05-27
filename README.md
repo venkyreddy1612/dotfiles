@@ -8,6 +8,7 @@ A clean and minimal Arch Linux setup using:
 - Rofi
 - Picom
 - Adwaita Dark
+- GNU Stow
 - JetBrains Mono Nerd Font
 
 Designed for:
@@ -57,9 +58,11 @@ Designed for:
 - Transparent top bar
 - Adwaita Dark GTK theme
 - Transparent Alacritty
+- Transparent Neovim
 - Picom animations
 - LazyVim development environment
 - Rofi application launcher
+- GNU Stow managed dotfiles
 - JetBrains Mono Nerd Font
 - Modern dark UI aesthetic
 
@@ -98,6 +101,7 @@ neovim \
 git \
 zsh \
 starship \
+stow \
 pipewire \
 pipewire-pulse \
 pavucontrol \
@@ -151,19 +155,23 @@ cd dotfiles
 
 ---
 
-## 5. Apply Configs
-
-Copy all configuration files:
+## 5. Apply Configurations Using GNU Stow
 
 ```bash
-cp -r qtile ~/.config/
-cp -r alacritty ~/.config/
-cp -r picom ~/.config/
-cp -r rofi ~/.config/
-cp -r nvim ~/.config/
-cp -r gtk ~/.config/
-cp zsh/.zshrc ~/
+stow qtile
+stow alacritty
+stow picom
+stow rofi
+stow nvim
+stow gtk
+stow zsh
 ```
+
+This automatically creates symlinks in:
+- `~/.config`
+- `~/`
+
+The dotfiles repository becomes the single source of truth for all configurations.
 
 ---
 
@@ -185,7 +193,7 @@ source ~/.zshrc
 
 ## 7. Configure GTK Theme
 
-Open:
+Launch:
 
 ```bash
 lxappearance
@@ -251,12 +259,34 @@ Or reboot.
 dotfiles/
 ├── README.md
 ├── qtile/
+│   └── .config/
+│       └── qtile/
+│           ├── config.py
+│           └── autostart.sh
+│
 ├── alacritty/
+│   └── .config/
+│       └── alacritty/
+│
 ├── picom/
+│   └── .config/
+│       └── picom/
+│
 ├── rofi/
+│   └── .config/
+│       └── rofi/
+│
 ├── nvim/
-├── zsh/
+│   └── .config/
+│       └── nvim/
+│
 ├── gtk/
+│   └── .config/
+│       └── gtk-3.0/
+│
+├── zsh/
+│   └── .zshrc
+│
 └── screenshots/
 ```
 
@@ -298,10 +328,11 @@ Using LazyVim with:
 
 # Picom
 
-Minimal compositor setup with:
+Configured with:
 - smooth fading
 - rounded corners
 - subtle shadows
+- lightweight xrender backend
 - VirtualBox-safe configuration
 
 ---
@@ -343,6 +374,22 @@ Recommended:
 
 ---
 
+# Package Backup
+
+Export installed packages:
+
+```bash
+pacman -Qqe > pkglist.txt
+```
+
+Reinstall later:
+
+```bash
+sudo pacman -S --needed - < pkglist.txt
+```
+
+---
+
 # Screenshots
 
 Create screenshots directory:
@@ -367,8 +414,8 @@ screenshots/
 - [ ] Add Dunst theme
 - [ ] Add lockscreen
 - [ ] Add wallpapers
-- [ ] Add install script
-- [ ] Add GNU Stow support
+- [ ] Add bootstrap install script
+- [ ] Add package list automation
 - [ ] Add screenshots
 
 ---
@@ -376,4 +423,3 @@ screenshots/
 # License
 
 MIT
-
