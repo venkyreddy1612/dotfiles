@@ -1,0 +1,42 @@
+[font]
+size = 13
+
+[font.normal]
+family = "Mononoki Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "Mononoki Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "Mononoki Nerd Font"
+style = "Italic"
+
+[colors.primary]
+background = "#1e1e1e"
+foreground = "#ffffff"
+
+[colors.normal]
+black   = "#241f31"
+red     = "#ed333b"
+green   = "#57e389"
+yellow  = "#f6d32d"
+blue    = "#3584e4"
+magenta = "#c061cb"
+cyan    = "#5bc8af"
+white   = "#deddda"
+
+[colors.bright]
+black   = "#5e5c64"
+red     = "#ff6b6b"
+green   = "#8ff0a4"
+yellow  = "#f9f06b"
+blue    = "#62a0ea"
+magenta = "#dc8add"
+cyan    = "#93ddc2"
+white   = "#ffffff"
+
+[window]
+opacity = 0.95
+padding = { x = 8, y = 8 }
