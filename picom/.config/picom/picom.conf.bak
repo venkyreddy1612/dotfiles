@@ -15,13 +15,3 @@ corner-radius = 10;
 inactive-opacity = 1.0;
 active-opacity = 1.0;
 frame-opacity = 1.0;
-
-animations = true;
-
-animation-window-mass = 0.5;
-animation-stiffness = 200;
-animation-dampening = 20;
-animation-clamping = false;
-
-animation-for-open-window = "slide-down";
-animation-for-unmap-window = "slide-up";
