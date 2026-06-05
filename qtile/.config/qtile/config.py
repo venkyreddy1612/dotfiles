@@ -65,6 +65,14 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     #  Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "r", lazy.spawn("/home/venkyreddy16/.config/rofi/launchers/type-1/launcher.sh")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")),
+
+    Key([], "XF86AudioLowerVolume", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")),
+
+    Key([], "XF86AudioMute", lazy.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")),
+
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +5%")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-")),
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -138,7 +146,7 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 
 top_bar_colors = {
-    "bg": "#1e1e1ef2",
+    "bg": "#1e1e1ed9",
     "surface": "#2b2b2b",
     "fg": "#ffffff",
     "blue": "#3584e4",
