@@ -66,6 +66,8 @@ keys = [
     #  Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "r", lazy.spawn("/home/venkyreddy16/.config/rofi/launchers/type-1/launcher.sh")),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")),
+    Key([mod], "v", lazy.spawn("copyq show")),
+    Key([mod, "shift"], "s", lazy.spawn("flameshot gui")),
 
     Key([], "XF86AudioLowerVolume", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")),
 
@@ -73,6 +75,12 @@ keys = [
 
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +5%")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-")),
+    Key(
+        [mod],
+        "l",
+        lazy.spawn("betterlockscreen -l blur"),
+        desc="Lock screen",
+    ),
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -116,9 +124,9 @@ for i in groups:
     )
 
 layout_theme = {
-    "border_width": 2,
+    "border_width": 1,
     "margin": 6,
-    "border_focus": "#3584e4",
+    "border_focus": "#94e2d5",
     "border_normal": "#1e1e1e"
 }
 
@@ -164,39 +172,109 @@ screens = [
             [
                 widget.GroupBox(
                     highlight_method="block",
+                    rounded=True,
+                    disable_drag=True,
+
                     active=top_bar_colors["fg"],
                     inactive="#6c7086",
-                    this_current_screen_border=top_bar_colors["blue"],
-                    background=top_bar_colors["bg"],
-                ),
 
+                    this_current_screen_border=top_bar_colors["cyan"],
+                    this_screen_border="#44475a",
+
+                    other_current_screen_border="#6272a4",
+                    other_screen_border="#44475a",
+
+                    foreground=top_bar_colors["fg"],
+                    background=top_bar_colors["bg"],
+
+                    borderwidth=2,
+                    padding=5,
+                    margin_y=4,
+                    margin_x=2,
+
+                    fontsize=14,
+                ),
                 widget.Prompt(),
 
                 widget.WindowName(
                     foreground=top_bar_colors["fg"],
                     background=top_bar_colors["bg"],
+                    max_chars=35,
                 ),
 
                 widget.Systray(),
 
+                widget.Sep(
+                    linewidth=0,
+                    padding=12,
+                ),
+
+                widget.TextBox(
+                    text="",
+                    foreground="#666666",
+                    padding=8,
+                ),
                 widget.CPU(
-                    format="CPU {load_percent}%",
+                    format="󰍛 {load_percent:.0f}%",
                     foreground=top_bar_colors["green"],
+                    padding=10,
                 ),
 
+                widget.TextBox(
+                    text="",
+                    foreground="#666666",
+                    padding=8,
+                ),
                 widget.Memory(
-                    format="{MemUsed:.0f}{mm}",
+                    format="󰘚 {MemUsed:.1f}G",
                     foreground=top_bar_colors["yellow"],
+                    padding=10,
                 ),
 
+                widget.TextBox(
+                    text="",
+                    foreground="#666666",
+                    padding=8,
+                ),
                 widget.Volume(
+                    fmt="󰕾 {}",
                     foreground=top_bar_colors["blue"],
+                    padding=10,
                 ),
 
-                widget.Clock(
-                    format="%a %d %b  %I:%M %p",
-                    foreground=top_bar_colors["cyan"],
+                widget.TextBox(
+                    text="",
+                    foreground="#666666",
+                    padding=8,
                 ),
+                widget.Net(
+                    format="󰤨 {down}",
+                    foreground=top_bar_colors["cyan"],
+                    padding=10,
+                ),
+
+                widget.TextBox(
+                    text="",
+                    foreground="#666666",
+                    padding=8,
+                ),
+                widget.Battery(
+                    format="{char} {percent:2.0%}",
+                    foreground=top_bar_colors["green"],
+                    padding=10,
+                ),
+
+                widget.TextBox(
+                    text="",
+                    foreground="#666666",
+                    padding=8,
+                ),
+                widget.Clock(
+                    format="%I:%M %p",
+                    fontsize=20,
+                    foreground=top_bar_colors["cyan"],
+                    padding=10,
+                )
             ],
             40,
             background=top_bar_colors["bg"],
