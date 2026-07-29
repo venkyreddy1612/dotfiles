@@ -3,3 +3,6 @@ __pycache__/
 .lazy/
 node_modules/
 .cache/
+*.swp
+*.swp
+*~
