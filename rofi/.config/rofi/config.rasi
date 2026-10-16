@@ -5,7 +5,7 @@
  * 
  * Configuration For Rofi Version: 1.7.3
  **/
-
+@theme "themes/tokyo-night"
 configuration {
 	/*---------- General setting ----------*/
 	modi: "drun,run,filebrowser,window";
@@ -83,9 +83,9 @@ configuration {
 
 	/*---------- Misc setting ----------*/
 	terminal: "rofi-sensible-terminal";
-	font: "Mono 12";
 	sort: false;
-	threads: 0;
+	font: "JetBrainsMono Nerd Font 12";
+  threads: 0;
 	click-to-exit: true;
 /*	ignored-prefixes: "";*/
 /*	pid: "/run/user/1000/rofi.pid";*/
